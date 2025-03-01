@@ -1,3 +1,9 @@
 # Bupe
 /books
 /bupe.db
+
+# Node
+/node_modules
+
+# Vite
+.vite/
