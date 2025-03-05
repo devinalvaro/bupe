@@ -1,15 +1,30 @@
 {
 	"tasks": {
-		"dev": "deno run -A --watch ./server/main.ts",
-		"serve": "deno run -A ./server/main.ts"
+		"client:dev": "deno run -A --node-modules-dir=auto npm:vite",
+		"client:build": "deno run -A --node-modules-dir=auto npm:vite build",
+		"server:dev": "deno run -A --watch ./server/main.ts",
+		"server:serve": "deno run -A ./server/main.ts",
+		"dev": "deno run client:dev & deno run server:dev",
+		"serve": "deno run client:build && deno run server:serve"
 	},
 	"imports": {
 		"@db/sqlite": "jsr:@db/sqlite@^0.12.0",
+		"@deno/vite-plugin": "npm:@deno/vite-plugin@^1.0.3",
 		"@libs/xml": "jsr:@libs/xml@^6.0.4",
 		"@std/path": "jsr:@std/path@^1.0.8",
+		"@types/react": "npm:@types/react@^19.0.8",
+		"@vitejs/plugin-react": "npm:@vitejs/plugin-react@^4.3.4",
 		"@zip.js/zip.js": "npm:@zip.js/zip.js@^2.7.57",
 		"effect": "npm:effect@^3.12.7",
-		"hono": "npm:hono@^4.6.20"
+		"hono": "npm:hono@^4.6.20",
+		"react": "npm:react@^19.0.0",
+		"react-dom": "npm:react-dom@^19.0.0",
+		"react-router-dom": "npm:react-router-dom@^7.1.5",
+		"vite": "npm:vite@^6.0.11"
+	},
+	"compilerOptions": {
+		"lib": ["deno.ns", "dom", "dom.iterable"],
+		"jsx": "react-jsx"
 	},
 	"lint": {
 		"rules": {
